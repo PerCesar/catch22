@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Participants Bird Watching Competition</title>
+</head>
+<body>
+
+	<div align="center">
+		<h1>Participants</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Participants Participant Number</th>
+					<th>Participants Last Name</th>
+					<th>Participants First Name</th>
+					<th>Participants Phone Number</th>
+					<th>Participants Home Address</th>
+					<th>Participants City</th>
+					<th>Participants State</th>
+					<th>Participants Postal Code</th>
+					<th>Participants Email</th>
+					<th>Participants Birth Year</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="participants : ${listParticipants}">
+					<td th:text="${participants.participantNumber}"></td>
+					<td th:text="${participants.lastName}"></td>
+					<td th:text="${participants.firstName}"></td>
+					<td th:text="${participants.phoneNumber}"></td>
+					<td th:text="${participants.homeAddress}"></td>
+					<td th:text="${participants.city}"></td>
+					<td th:text="${participants.State}"></td>
+					<td th:text="${participants.postalCode}"></td>
+					<td th:text="${participants.email}"></td>
+					<td th:text="${participants.birthYear}"></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		</body>
+		</html>
+
+					
+
+
+
+		</table>
+		</div>
+</body>
+</html>
