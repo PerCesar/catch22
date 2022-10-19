@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.beltran.catch22.entity.ParticipantsData;
+
 @Entity
 @Table(name = "participants")
 public class Participants {
@@ -46,9 +48,6 @@ public class Participants {
 	@Column(nullable = false)
 	private Long birthYear;
 	
-	@OneToMany(mappedBy = "participants", fetch = FetchType.EAGER)
-	private List<ParticipantsData> participantsdata;
-	
 	public Participants() {
 		super();
 		
@@ -68,7 +67,6 @@ public class Participants {
 		this.postalCode = postalCode;
 		this.email = email;
 		this.birthYear = birthYear;
-		this.participantsdata = participantsdata;
 	}
 
 	public int getParticipantNumber() {
@@ -151,20 +149,14 @@ public class Participants {
 		this.birthYear = birthYear;
 	}
 
-	public List<ParticipantsData> getParticipantsdata() {
-		return participantsdata;
-	}
 
-	public void setParticipantsdata(List<ParticipantsData> participantsdata) {
-		this.participantsdata = participantsdata;
-	}
 
 	@Override
 	public String toString() {
 		return "Participants [participantNumber=" + participantNumber + ", lastName=" + lastName + ", firstName="
 				+ firstName + ", phoneNumber=" + phoneNumber + ", homeAddress=" + homeAddress + ", city=" + city
 				+ ", state=" + state + ", postalCode=" + postalCode + ", email=" + email + ", birthYear=" + birthYear
-				+ ", participantsdata=" + participantsdata + "]";
+				+ "]";
 	}
 	
 	

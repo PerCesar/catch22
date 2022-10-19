@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Catch22</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7ZNXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container my-2">
+		<h1>Participants</h1>
+
+			<a th:href = "@{/signUpParticipantsForm}" class="btn btn-primary btn-sm mb-3">Join as a Participant!</a>
+		<table border="1" class= "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Participants id</th>
+					<th>Participants Last Name</th>
+					<th>Participants First Name</th>
+					<th>Participants Phone Number</th>
+					<th>Participants Home Address</th>
+					<th>Participants City</th>
+					<th>Participants State</th>
+					<th>Participants Postal Code</th>
+					<th>Participants Email</th>
+					<th>Participants Birth Year</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="participants : ${listParticipants}">
+					<td th:text="${participants.id}"></td>
+					<td th:text="${participants.lastName}"></td>
+					<td th:text="${participants.firstName}"></td>
+					<td th:text="${participants.phoneNumber}"></td>
+					<td th:text="${participants.homeAddress}"></td>
+					<td th:text="${participants.city}"></td>
+					<td th:text="${participants.State}"></td>
+					<td th:text="${participants.postalCode}"></td>
+					<td th:text="${participants.email}"></td>
+					<td th:text="${participants.birthYear}"></td>
+	
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		</body>
+		</html>

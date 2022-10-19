@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.beltran.catch22.entity.Participants;
 
+
+
 @Repository
 public interface ParticipantsRepository extends JpaRepository<Participants, Long> {
 

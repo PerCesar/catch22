@@ -1,6 +1,6 @@
 package com.beltran.catch22.entity;
 
-import javax.persistence.Column;
+import javax.persistence.Column; 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,10 +39,6 @@ public class Payment {
 	@Column(name="participantNumber", nullable = false)
 	private int participantNumber;
 	
-	@OneToOne
-	@JoinColumn(name="participants_participantNumber")
-	private Participants participant;
-	
 	public Payment() {
 		super();
 	}
@@ -58,7 +54,6 @@ public class Payment {
 		this.paymentDate = paymentDate;
 		this.amount = amount;
 		this.participantNumber = participantNumber;
-		this.participant = participant;
 	}
 
 	public String getCheckNumber() {
@@ -125,20 +120,12 @@ public class Payment {
 		this.participantNumber = participantNumber;
 	}
 
-	public Participants getParticipant() {
-		return participant;
-	}
-
-	public void setParticipant(Participants participant) {
-		this.participant = participant;
-	}
-
 	@Override
 	public String toString() {
 		return "Payment [checkNumber=" + checkNumber + ", stateIdNumber=" + stateIdNumber + ", creditCardNumber="
 				+ creditCardNumber + ", expirationDate=" + expirationDate + ", securityCode=" + securityCode
 				+ ", paymentDate=" + paymentDate + ", amount=" + amount + ", participantNumber=" + participantNumber
-				+ ", participant=" + participant + "]";
+				+ "]";
 	}
 	
 }

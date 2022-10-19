@@ -32,10 +32,6 @@ public class Park {
 	@Column(name="parkOrganizerNumber", nullable=false)
 	private String parkOrganizerNumber;
 	
-	@OneToOne
-	@JoinColumn(name="parkOrganizer_parkOrganizerNumber")
-	private ParkOrganizer parkOrganizer;
-	
 	public Park() {
 		super();
 	}
@@ -47,7 +43,6 @@ public class Park {
 		this.meetingLocation = meetingLocation;
 		this.meetingTime = meetingTime;
 		this.parkOrganizerNumber = parkOrganizerNumber;
-		this.parkOrganizer = parkOrganizer;
 	}	
 	public String getParkCode() {
 		return parkCode;
@@ -79,17 +74,11 @@ public class Park {
 	public void setParkOrganizerNumber(String parkOrganizerNumber) {
 		this.parkOrganizerNumber = parkOrganizerNumber;
 	}
-	public ParkOrganizer getParkOrganizer() {
-		return parkOrganizer;
-	}
-	public void setParkOrganizer(ParkOrganizer parkOrganizer) {
-		this.parkOrganizer = parkOrganizer;
-	}
+
 	@Override
 	public String toString() {
 		return "Park [parkCode=" + parkCode + ", parkName=" + parkName + ", meetingLocation=" + meetingLocation
-				+ ", meetingTime=" + meetingTime + ", parkOrganizerNumber=" + parkOrganizerNumber + ", parkOrganizer="
-				+ parkOrganizer + "]";
+				+ ", meetingTime=" + meetingTime + ", parkOrganizerNumber=" + parkOrganizerNumber + "]";
 	}
 }
 

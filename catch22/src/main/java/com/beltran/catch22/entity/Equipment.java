@@ -1,6 +1,6 @@
 package com.beltran.catch22.entity;
 
-import javax.persistence.Column;
+import javax.persistence.Column; 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,10 +39,6 @@ public class Equipment {
 	@Column(name ="participantNumber", nullable = false)
 	private int participantNumber;
 	
-	@ManyToOne
-	@JoinColumn(name="participants_participantNumber")
-	private Participants participant;
-	
 	public Equipment() {
 		super();
 	}
@@ -58,7 +54,6 @@ public class Equipment {
 		this.expectedReturn = expectedReturn;
 		this.itemReturned = itemReturned;
 		this.participantNumber = participantNumber;
-		this.participant = participant;
 	}
 
 	public String getItemCode() {
@@ -125,20 +120,12 @@ public class Equipment {
 		this.participantNumber = participantNumber;
 	}
 
-	public Participants getParticipant() {
-		return participant;
-	}
-
-	public void setParticipant(Participants participant) {
-		this.participant = participant;
-	}
 
 	@Override
 	public String toString() {
 		return "Equipment [itemCode=" + itemCode + ", itemName=" + itemName + ", itemBrand=" + itemBrand
 				+ ", stockQuantity=" + stockQuantity + ", price=" + price + ", expectedReturn=" + expectedReturn
-				+ ", itemReturned=" + itemReturned + ", participantNumber=" + participantNumber + ", participant="
-				+ participant + "]";
+				+ ", itemReturned=" + itemReturned + ", participantNumber=" + participantNumber + "]";
 	}
 	
 }

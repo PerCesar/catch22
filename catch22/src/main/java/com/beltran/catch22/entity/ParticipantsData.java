@@ -1,6 +1,6 @@
 package com.beltran.catch22.entity;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -41,9 +42,8 @@ public class ParticipantsData {
 	@Column(name="parkOrganizerNumber", nullable=false)
 	private String parkOrganizerNumber;
 	
-	@ManyToOne
-	@JoinColumn(name="participants_participantNumber")
-	private Participants participants;
+
+	
 	
 	public ParticipantsData() {
 		super();
@@ -59,7 +59,6 @@ public class ParticipantsData {
 		this.numberOfSpecies = numberOfSpecies;
 		this.participantNumber = participantNumber;
 		this.parkOrganizerNumber = parkOrganizerNumber;
-		this.participants = participants;
 	}
 
 	public int getPictureNumber() {
@@ -118,20 +117,13 @@ public class ParticipantsData {
 		this.parkOrganizerNumber = parkOrganizerNumber;
 	}
 
-	public Participants getParticipants() {
-		return participants;
-	}
-
-	public void setParticipants(Participants participants) {
-		this.participants = participants;
-	}
 
 	@Override
 	public String toString() {
 		return "ParticipantsData [pictureNumber=" + pictureNumber + ", birdCode=" + birdCode + ", dateTaken="
 				+ dateTaken + ", speciesIdentifiedByOrganizer=" + speciesIdentifiedByOrganizer
 				+ ", numberOfSpecies=" + numberOfSpecies + ", participantNumber=" + participantNumber
-				+ ", parkOrganizerNumber=" + parkOrganizerNumber + ", participants=" + participants + "]";
+				+ ", parkOrganizerNumber=" + parkOrganizerNumber + "]";
 	}
 	
 	

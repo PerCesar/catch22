@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,9 +26,6 @@ public class BirdList {
 	@Column(name= "birdClass", nullable = false)
 	private String birdClass;
 	
-	@ManyToMany(mappedBy = "birdList", fetch = FetchType.EAGER)
-	private List<ParticipantsData> participantsData;
-	
 	public BirdList () {
 		super();
 	}
@@ -37,7 +35,6 @@ public class BirdList {
 		this.birdCode = birdCode;
 		this.speciesName = speciesName;
 		this.birdClass = birdClass;
-		this.participantsData = participantsData;
 	}
 
 	public String getBirdCode() {
@@ -64,18 +61,10 @@ public class BirdList {
 		this.birdClass = birdClass;
 	}
 
-	public List<ParticipantsData> getParticipantsData() {
-		return participantsData;
-	}
-
-	public void setParticipantsData(List<ParticipantsData> participantsData) {
-		this.participantsData = participantsData;
-	}
-
 	@Override
 	public String toString() {
 		return "BirdList [birdCode=" + birdCode + ", speciesName=" + speciesName + ", birdClass=" + birdClass
-				+ ", participantsData=" + participantsData + "]";
+				+ "]";
 	}
 	
 

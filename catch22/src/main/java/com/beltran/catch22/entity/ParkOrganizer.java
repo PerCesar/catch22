@@ -34,15 +34,12 @@ public class ParkOrganizer {
 	@Column(name="parkCode", nullable=false)
 	private int parkCode;
 	
-	@OneToMany(mappedBy = "parkOrganizer", fetch = FetchType.EAGER)
-	private List<ParticipantsData> documents;
-	
 	public ParkOrganizer() {
 		super();
 	}
 
 	public ParkOrganizer(int parkOrganizerNumber, int lastName, int firstName, int email, int phoneNumber, int parkCode,
-			List<ParticipantsData> documents) {
+			List<ParticipantsData> participantsData) {
 		super();
 		this.parkOrganizerNumber = parkOrganizerNumber;
 		this.lastName = lastName;
@@ -50,7 +47,6 @@ public class ParkOrganizer {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.parkCode = parkCode;
-		this.documents = documents;
 	}
 
 	public int getParkOrganizerNumber() {
@@ -101,24 +97,15 @@ public class ParkOrganizer {
 		this.parkCode = parkCode;
 	}
 
-	public List<ParticipantsData> getDocuments() {
-		return documents;
-	}
-
-	public void setDocuments(List<ParticipantsData> documents) {
-		this.documents = documents;
-	}
 
 	@Override
 	public String toString() {
 		return "ParkOrganizer [parkOrganizerNumber=" + parkOrganizerNumber + ", lastName=" + lastName + ", firstName="
 				+ firstName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", parkCode=" + parkCode
-				+ ", documents=" + documents + "]";
+				+ "]";
 	}
-	
+
 }
-
-
 
 
 
