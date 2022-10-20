@@ -22,6 +22,7 @@ public class PaymentServiceImpl implements PaymentService{
 
 	@Override
 	public void savePayment(Payment payment) {
+		System.out.print(payment.getParticipantId());
 		this.paymentRepository.save(payment);
 		
 	}
