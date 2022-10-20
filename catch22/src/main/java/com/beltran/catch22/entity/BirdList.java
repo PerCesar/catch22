@@ -1,10 +1,10 @@
 package com.beltran.catch22.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +17,7 @@ public class BirdList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "birdCode", nullable = false)
-	private String birdCode;
+	private int birdCode;
 	
 	@Column(name= "speciesName", nullable = false)
 	private String speciesName;
@@ -25,26 +25,25 @@ public class BirdList {
 	@Column(name= "birdClass", nullable = false)
 	private String birdClass;
 	
-	@ManyToMany(mappedBy = "birdList", fetch = FetchType.EAGER)
-	private List<ParticipantsData> participantsData;
+//	@ManyToMany(targetEntity = ParticipantsData.class)
+//	private Set getPictureNumber () {return getPictureNumber();}
 	
 	public BirdList () {
 		super();
 	}
 
-	public BirdList(String birdCode, String speciesName, String birdClass, List<ParticipantsData> participantsData) {
+	public BirdList(int birdCode, String speciesName, String birdClass, List<ParticipantsData> participantsData) {
 		super();
 		this.birdCode = birdCode;
 		this.speciesName = speciesName;
 		this.birdClass = birdClass;
-		this.participantsData = participantsData;
 	}
 
-	public String getBirdCode() {
+	public int getBirdCode() {
 		return birdCode;
 	}
 
-	public void setBirdCode(String birdCode) {
+	public void setBirdCode(int birdCode) {
 		this.birdCode = birdCode;
 	}
 
@@ -64,18 +63,11 @@ public class BirdList {
 		this.birdClass = birdClass;
 	}
 
-	public List<ParticipantsData> getParticipantsData() {
-		return participantsData;
-	}
-
-	public void setParticipantsData(List<ParticipantsData> participantsData) {
-		this.participantsData = participantsData;
-	}
 
 	@Override
 	public String toString() {
 		return "BirdList [birdCode=" + birdCode + ", speciesName=" + speciesName + ", birdClass=" + birdClass
-				+ ", participantsData=" + participantsData + "]";
+				+ "]";
 	}
 	
 

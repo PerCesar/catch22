@@ -1,6 +1,7 @@
 package com.beltran.catch22.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +19,8 @@ public class Participants {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int participantNumber;
+	@Column(nullable = false)
+	private long id;
 	
 	@Column(nullable = false)
 	private String lastName;
@@ -44,21 +47,28 @@ public class Participants {
 	private String email;
 	
 	@Column(nullable = false)
-	private Long birthYear;
+	private long birthYear;
 	
-	@OneToMany(mappedBy = "participants", fetch = FetchType.EAGER)
-	private List<ParticipantsData> participantsdata;
+	@OneToOne(targetEntity = Payment.class)
+	private List paymentlist;
+	
+	@OneToMany(mappedBy = "id")
+	private List<Equipment> equipmentList;
+	
+	@OneToMany(mappedBy = "id")
+	private List<ParticipantsData> participantsDataList;
+
 	
 	public Participants() {
 		super();
 		
 	}
 
-	public Participants(int participantNumber, String lastName, String firstName, String phoneNumber,
-			String homeAddress, String city, String state, String postalCode, String email, Long birthYear,
+	public Participants(long id, String lastName, String firstName, String phoneNumber,
+			String homeAddress, String city, String state, String postalCode, String email, long birthYear,
 			List<ParticipantsData> participantsdata) {
 		super();
-		this.participantNumber = participantNumber;
+		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.phoneNumber = phoneNumber;
@@ -68,15 +78,14 @@ public class Participants {
 		this.postalCode = postalCode;
 		this.email = email;
 		this.birthYear = birthYear;
-		this.participantsdata = participantsdata;
 	}
 
-	public int getParticipantNumber() {
-		return participantNumber;
+	public long getId() {
+		return id;
 	}
 
-	public void setParticipantNumber(int participantNumber) {
-		this.participantNumber = participantNumber;
+	public void setParticipantNumber(long id) {
+		this.id = id;
 	}
 
 	public String getLastName() {
@@ -143,32 +152,21 @@ public class Participants {
 		this.email = email;
 	}
 
-	public Long getBirthYear() {
+	public long getBirthYear() {
 		return birthYear;
 	}
 
-	public void setBirthYear(Long birthYear) {
+	public void setBirthYear(long birthYear) {
 		this.birthYear = birthYear;
-	}
-
-	public List<ParticipantsData> getParticipantsdata() {
-		return participantsdata;
-	}
-
-	public void setParticipantsdata(List<ParticipantsData> participantsdata) {
-		this.participantsdata = participantsdata;
 	}
 
 	@Override
 	public String toString() {
-		return "Participants [participantNumber=" + participantNumber + ", lastName=" + lastName + ", firstName="
+		return "Participants [id=" + id + ", lastName=" + lastName + ", firstName="
 				+ firstName + ", phoneNumber=" + phoneNumber + ", homeAddress=" + homeAddress + ", city=" + city
 				+ ", state=" + state + ", postalCode=" + postalCode + ", email=" + email + ", birthYear=" + birthYear
-				+ ", participantsdata=" + participantsdata + "]";
+				+ "]";
 	}
-	
-	
-	
-	
-	
-}
+
+
+	}

@@ -1,6 +1,6 @@
 package com.beltran.catch22.entity;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,8 +35,11 @@ public class ParkOrganizer {
 	@Column(name="parkCode", nullable=false)
 	private int parkCode;
 	
-	@OneToMany(mappedBy = "parkOrganizer", fetch = FetchType.EAGER)
-	private List<ParticipantsData> documents;
+	@OneToMany(targetEntity = ParticipantsData.class, mappedBy = "parkOrganizerNumber")
+	private List participantsdatalist;
+	
+	@OneToOne(targetEntity = Park.class)
+	private List parklist;
 	
 	public ParkOrganizer() {
 		super();
@@ -50,7 +54,6 @@ public class ParkOrganizer {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.parkCode = parkCode;
-		this.documents = documents;
 	}
 
 	public int getParkOrganizerNumber() {
@@ -101,19 +104,11 @@ public class ParkOrganizer {
 		this.parkCode = parkCode;
 	}
 
-	public List<ParticipantsData> getDocuments() {
-		return documents;
-	}
-
-	public void setDocuments(List<ParticipantsData> documents) {
-		this.documents = documents;
-	}
-
 	@Override
 	public String toString() {
 		return "ParkOrganizer [parkOrganizerNumber=" + parkOrganizerNumber + ", lastName=" + lastName + ", firstName="
 				+ firstName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", parkCode=" + parkCode
-				+ ", documents=" + documents + "]";
+				+ "]";
 	}
 	
 }

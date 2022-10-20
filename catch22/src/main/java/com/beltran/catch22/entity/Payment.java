@@ -1,12 +1,10 @@
 package com.beltran.catch22.entity;
 
-import javax.persistence.Column;
+import javax.persistence.Column;  
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -15,58 +13,53 @@ import javax.persistence.Table;
 public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="checkNumber", nullable = false)
-	private String checkNumber;
+	@Column(nullable = false)
+	private long number;
 	
-	@Column(name="stateIdNumber", nullable = false)
+	@Column(nullable = false)
 	private int stateIdNumber;
 	
-	@Column(name="creditCardNumber", nullable = false)
+	@Column(nullable = false)
 	private String creditCardNumber;
 	
-	@Column(name="expirationDate", nullable = false)
+	@Column(nullable = false)
 	private String expirationDate;
 	
-	@Column(name="securityCode", nullable = false)
+	@Column(nullable = false)
 	private String securityCode;
 	
-	@Column(name="paymentDate", nullable = false)
+	@Column(nullable = false)
 	private String paymentDate;
 	
-	@Column(name="amount", nullable = false)
-	private Float amount;
+	@Column(nullable = false)
+	private long amount;
 	
-	@Column(name="participantNumber", nullable = false)
-	private int participantNumber;
-	
-	@OneToOne
-	@JoinColumn(name="participants_participantNumber")
-	private Participants participant;
+	@Column(nullable = false)
+	private long participantId;
 	
 	public Payment() {
 		super();
 	}
 
-	public Payment(String checkNumber, int stateIdNumber, String creditCardNumber, String expirationDate,
-			String securityCode, String paymentDate, Float amount, int participantNumber, Participants participant) {
+	public Payment(long number, int stateIdNumber, String creditCardNumber, String expirationDate,
+			String securityCode, String paymentDate, long amount, long participantId) {
 		super();
-		this.checkNumber = checkNumber;
+		this.number = number;
 		this.stateIdNumber = stateIdNumber;
 		this.creditCardNumber = creditCardNumber;
 		this.expirationDate = expirationDate;
 		this.securityCode = securityCode;
 		this.paymentDate = paymentDate;
 		this.amount = amount;
-		this.participantNumber = participantNumber;
-		this.participant = participant;
+		this.participantId = participantId;
 	}
 
-	public String getCheckNumber() {
-		return checkNumber;
+	public long getNumber() {
+		return number;
 	}
 
-	public void setCheckNumber(String checkNumber) {
-		this.checkNumber = checkNumber;
+	public void setCheckNumber(long number) {
+		this.number = number;
 	}
 
 	public int getStateIdNumber() {
@@ -109,36 +102,28 @@ public class Payment {
 		this.paymentDate = paymentDate;
 	}
 
-	public Float getAmount() {
+	public long getAmount() {
 		return amount;
 	}
 
-	public void setAmount(Float amount) {
+	public void setAmount(long amount) {
 		this.amount = amount;
 	}
 
-	public int getParticipantNumber() {
-		return participantNumber;
+	public long getParticipantId() {
+		return participantId;
 	}
 
-	public void setParticipantNumber(int participantNumber) {
-		this.participantNumber = participantNumber;
-	}
-
-	public Participants getParticipant() {
-		return participant;
-	}
-
-	public void setParticipant(Participants participant) {
-		this.participant = participant;
+	public void setParticipantId(long participantId) {
+		this.participantId = participantId;
 	}
 
 	@Override
 	public String toString() {
-		return "Payment [checkNumber=" + checkNumber + ", stateIdNumber=" + stateIdNumber + ", creditCardNumber="
+		return "Payment [number=" + number + ", stateIdNumber=" + stateIdNumber + ", creditCardNumber="
 				+ creditCardNumber + ", expirationDate=" + expirationDate + ", securityCode=" + securityCode
-				+ ", paymentDate=" + paymentDate + ", amount=" + amount + ", participantNumber=" + participantNumber
-				+ ", participant=" + participant + "]";
+				+ ", paymentDate=" + paymentDate + ", amount=" + amount + ", participantId=" + participantId
+				+ "]";
 	}
 	
 }

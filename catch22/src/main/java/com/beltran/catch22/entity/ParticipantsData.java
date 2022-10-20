@@ -1,6 +1,7 @@
 package com.beltran.catch22.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -35,31 +37,30 @@ public class ParticipantsData {
 	@Column(name= "numberOfSpecies", nullable=false)
 	private String numberOfSpecies;
 	
-	@Column(name="participantNumber", nullable=false)
-	private String participantNumber;
+	@Column(name="id", nullable=false)
+	private long id;
 	
 	@Column(name="parkOrganizerNumber", nullable=false)
 	private String parkOrganizerNumber;
 	
 	@ManyToOne
-	@JoinColumn(name="participants_participantNumber")
-	private Participants participants;
+	@JoinColumn (name="participantId", referencedColumnName = "id")
+	private Participants Access;
 	
 	public ParticipantsData() {
 		super();
 	}
 
 	public ParticipantsData(int pictureNumber, String birdCode, String dateTaken, String speciesIdentifiedByOrganizer, String numberOfSpecies,
-			String participantNumber, String parkOrganizerNumber, Participants participants) {
+			long id, String parkOrganizerNumber, Participants participants) {
 		super();
 		this.pictureNumber = pictureNumber;
 		this.birdCode = birdCode;
 		this.dateTaken = dateTaken;
 		this.speciesIdentifiedByOrganizer = speciesIdentifiedByOrganizer;
 		this.numberOfSpecies = numberOfSpecies;
-		this.participantNumber = participantNumber;
+		this.id = id;
 		this.parkOrganizerNumber = parkOrganizerNumber;
-		this.participants = participants;
 	}
 
 	public int getPictureNumber() {
@@ -102,12 +103,12 @@ public class ParticipantsData {
 		this.numberOfSpecies = numberOfSpecies;
 	}
 
-	public String getParticipantNumber() {
-		return participantNumber;
+	public long getid() {
+		return id;
 	}
 
-	public void setParticipantNumber(String participantNumber) {
-		this.participantNumber = participantNumber;
+	public void setid(long id) {
+		this.id = id;
 	}
 
 	public String getParkOrganizerNumber() {
@@ -118,20 +119,12 @@ public class ParticipantsData {
 		this.parkOrganizerNumber = parkOrganizerNumber;
 	}
 
-	public Participants getParticipants() {
-		return participants;
-	}
-
-	public void setParticipants(Participants participants) {
-		this.participants = participants;
-	}
-
 	@Override
 	public String toString() {
 		return "ParticipantsData [pictureNumber=" + pictureNumber + ", birdCode=" + birdCode + ", dateTaken="
 				+ dateTaken + ", speciesIdentifiedByOrganizer=" + speciesIdentifiedByOrganizer
-				+ ", numberOfSpecies=" + numberOfSpecies + ", participantNumber=" + participantNumber
-				+ ", parkOrganizerNumber=" + parkOrganizerNumber + ", participants=" + participants + "]";
+				+ ", numberOfSpecies=" + numberOfSpecies + ", id=" + id
+				+ ", parkOrganizerNumber=" + parkOrganizerNumber + "]";
 	}
 	
 	

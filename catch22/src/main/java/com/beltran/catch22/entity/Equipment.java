@@ -1,6 +1,6 @@
 package com.beltran.catch22.entity;
 
-import javax.persistence.Column;
+import javax.persistence.Column; 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +16,7 @@ public class Equipment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name ="itemCode", nullable = false)
-	private String itemCode;
+	private int itemCode;
 	
 	@Column(name ="itemName", nullable = false)
 	private String itemName;
@@ -36,19 +36,20 @@ public class Equipment {
 	@Column(name ="itemReturned", nullable = false)
 	private int itemReturned;
 	
-	@Column(name ="participantNumber", nullable = false)
-	private int participantNumber;
+	@Column(name ="id", nullable = false)
+	private long id;
 	
 	@ManyToOne
-	@JoinColumn(name="participants_participantNumber")
-	private Participants participant;
+	@JoinColumn (name="participantId", referencedColumnName = "id")
+
+	private Participants Access;
 	
 	public Equipment() {
 		super();
 	}
 
-	public Equipment(String itemCode, String itemName, String itemBrand, int stockQuantity, Float price,
-			int expectedReturn, int itemReturned, int participantNumber, Participants participant) {
+	public Equipment(int itemCode, String itemName, String itemBrand, int stockQuantity, Float price,
+			int expectedReturn, int itemReturned, int id, Participants participant) {
 		super();
 		this.itemCode = itemCode;
 		this.itemName = itemName;
@@ -57,15 +58,14 @@ public class Equipment {
 		this.price = price;
 		this.expectedReturn = expectedReturn;
 		this.itemReturned = itemReturned;
-		this.participantNumber = participantNumber;
-		this.participant = participant;
+		this.id = id;
 	}
 
-	public String getItemCode() {
+	public int getItemCode() {
 		return itemCode;
 	}
 
-	public void setItemCode(String itemCode) {
+	public void setItemCode(int itemCode) {
 		this.itemCode = itemCode;
 	}
 
@@ -117,28 +117,20 @@ public class Equipment {
 		this.itemReturned = itemReturned;
 	}
 
-	public int getParticipantNumber() {
-		return participantNumber;
+	public long getid() {
+		return id;
 	}
 
-	public void setParticipantNumber(int participantNumber) {
-		this.participantNumber = participantNumber;
+	public void setid(int id) {
+		this.id = id;
 	}
 
-	public Participants getParticipant() {
-		return participant;
-	}
-
-	public void setParticipant(Participants participant) {
-		this.participant = participant;
-	}
 
 	@Override
 	public String toString() {
 		return "Equipment [itemCode=" + itemCode + ", itemName=" + itemName + ", itemBrand=" + itemBrand
 				+ ", stockQuantity=" + stockQuantity + ", price=" + price + ", expectedReturn=" + expectedReturn
-				+ ", itemReturned=" + itemReturned + ", participantNumber=" + participantNumber + ", participant="
-				+ participant + "]";
+				+ ", itemReturned=" + itemReturned + ", id=" + id + "]";
 	}
 	
 }

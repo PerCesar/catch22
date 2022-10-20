@@ -18,7 +18,7 @@ public class Park {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="parkCode", nullable=false)
-	private String parkCode;
+	private int parkCode;
 
 	@Column(name="parkName", nullable=false)
 	private String parkName;
@@ -32,14 +32,10 @@ public class Park {
 	@Column(name="parkOrganizerNumber", nullable=false)
 	private String parkOrganizerNumber;
 	
-	@OneToOne
-	@JoinColumn(name="parkOrganizer_parkOrganizerNumber")
-	private ParkOrganizer parkOrganizer;
-	
 	public Park() {
 		super();
 	}
-	public Park(String parkCode, String parkName, String meetingLocation, String meetingTime,
+	public Park(int parkCode, String parkName, String meetingLocation, String meetingTime,
 			String parkOrganizerNumber, ParkOrganizer parkOrganizer) {
 		super();
 		this.parkCode = parkCode;
@@ -47,12 +43,11 @@ public class Park {
 		this.meetingLocation = meetingLocation;
 		this.meetingTime = meetingTime;
 		this.parkOrganizerNumber = parkOrganizerNumber;
-		this.parkOrganizer = parkOrganizer;
 	}	
-	public String getParkCode() {
+	public int getParkCode() {
 		return parkCode;
 	}
-	public void setParkCode(String parkCode) {
+	public void setParkCode(int parkCode) {
 		this.parkCode = parkCode;
 	}
 	public String getParkName() {
@@ -79,17 +74,11 @@ public class Park {
 	public void setParkOrganizerNumber(String parkOrganizerNumber) {
 		this.parkOrganizerNumber = parkOrganizerNumber;
 	}
-	public ParkOrganizer getParkOrganizer() {
-		return parkOrganizer;
-	}
-	public void setParkOrganizer(ParkOrganizer parkOrganizer) {
-		this.parkOrganizer = parkOrganizer;
-	}
+
 	@Override
 	public String toString() {
 		return "Park [parkCode=" + parkCode + ", parkName=" + parkName + ", meetingLocation=" + meetingLocation
-				+ ", meetingTime=" + meetingTime + ", parkOrganizerNumber=" + parkOrganizerNumber + ", parkOrganizer="
-				+ parkOrganizer + "]";
+				+ ", meetingTime=" + meetingTime + ", parkOrganizerNumber=" + parkOrganizerNumber + "]";
 	}
 }
 
