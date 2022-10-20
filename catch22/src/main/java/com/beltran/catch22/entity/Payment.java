@@ -34,7 +34,7 @@ public class Payment {
 	@Column(nullable = false)
 	private long amount;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private long participantId;
 	
 	public Payment() {
